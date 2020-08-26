@@ -21,14 +21,9 @@ const ListCrud =  ({ navigation }) => {
      useEffect(getListCate, []);
     
 
-    //  function onSubMit(id,value){
-    //     axios.put(`https://5e96a56d5b19f10016b5e81f.mockapi.io/users/${id}`,value)
-    //     .then(function (response) {
-    //       alert('Cập nhập thành công');
-    //       getListCate();
-    //       navigation.navigate('ListCrud')
-    //     })
-    //   }
+     function callAgainApi(){
+        getListCate();
+     }
 
       
       
@@ -38,7 +33,9 @@ const ListCrud =  ({ navigation }) => {
                     title="Thêm mới danh bạ"
                     buttonStyle={{backgroundColor:'green'}}
                     onPress={()=>{
-                        navigation.navigate('AddDanhBa')
+                        navigation.navigate('AddDanhBa',{
+                            callAgainApi : callAgainApi
+                          })
                     }}
                  />
                     {
@@ -46,6 +43,7 @@ const ListCrud =  ({ navigation }) => {
                             <TouchableOpacity onPress={()=>{
                                 navigation.navigate('EditDanhBa',{
                                      users: l, 
+                                     callAgainApi : callAgainApi
                                    })
                              }}>
                                 <ListItem

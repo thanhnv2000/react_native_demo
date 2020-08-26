@@ -18,17 +18,7 @@ import axios from 'axios';
 import ImagePicker from 'react-native-image-picker';
 const EditDanhBa =  ({ navigation,  route }) => {
   const { users } = route.params;
-  // const [valueInput,setValueUser] = useState(users)
-  // const [valueUser,setValueUser] = useState({
-  //       me_name: '',
-  //       ba_name: '',
-  //       me_phone: '',
-  //       ba_phone: '',
-  //       avatar_url: 'https://png.pngtree.com/png-clipart/20190520/original/pngtree-vector-users-icon-png-image_4144740.jpg',
-  //       name_child: '',
-  //       address: '',
-  //       age: 0
-  // });
+  const { callAgainApi } = route.params;
 
   const [valueUser,setValueUser] = useState(users);
 
@@ -37,15 +27,32 @@ const EditDanhBa =  ({ navigation,  route }) => {
     .then(function (response) {
       alert('Cập nhập thành công');
       navigation.navigate('ListCrud')
+      callAgainApi();
     })
   }
 
   function onDelete(){
-    axios.delete(`https://5e96a56d5b19f10016b5e81f.mockapi.io/users/${users.id}`)
-    .then(function (response) {
-      alert('Xóa thành công')
-      navigation.navigate('ListCrud')
-    })
+  
+    Alert.alert(
+      'Bạn có chắc muốn xóa danh bạ này ?',
+      'Lưu ý :sẽ không lấy lại đc khi xóa',
+      [
+        { text: 'Đồng ý', onPress: () => {
+          axios.delete(`https://5e96a56d5b19f10016b5e81f.mockapi.io/users/${users.id}`)
+          .then(function (response) {
+            alert('Xóa thành công')
+            navigation.navigate('ListCrud');
+            callAgainApi();
+          })
+        } },
+        {
+          text: 'Hủy',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel'
+        },
+      ],
+      { cancelable: false }
+    );
   }
 
 

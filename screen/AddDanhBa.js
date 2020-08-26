@@ -16,7 +16,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import axios from 'axios';
 
 import ImagePicker from 'react-native-image-picker';
-const EditDanhBa =  ({ navigation,  route }) => {
+const AddDanhBa =  ({ navigation,  route }) => {
+  const { callAgainApi } = route.params;
 
   const [valueUser,setValueUser] = useState({
         me_name: '',
@@ -33,7 +34,8 @@ const EditDanhBa =  ({ navigation,  route }) => {
     axios.post('https://5e96a56d5b19f10016b5e81f.mockapi.io/users',valueUser)
     .then(function (response) {
       alert('Cập nhập thành công')
-      navigation.navigate('ListCrud')
+      navigation.navigate('ListCrud');
+      callAgainApi();
     })
   }
 
@@ -146,4 +148,4 @@ const styles = StyleSheet.create({
     }
   });
 
-export default EditDanhBa;
+export default AddDanhBa;
