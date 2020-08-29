@@ -29,11 +29,30 @@ const Tabs = createBottomTabNavigator();
 
 
 const HomeStackScreen = () => (
+
   <HomeStack.Navigator initialRouteName="Home">
       <HomeStack.Screen name="Home" component={ListCategory} 
-      //  options={{title : "Home"}}
-      options={{headerTitle : () => <Header/>}}
-
+       options={{
+          headerStyle : {
+            backgroundColor: '#f4511e',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            textAlign: 'center',
+         },
+         headerTitle: () =><Header/>
+      }}
+      // options={{
+      //   headerTitle : () =><Header
+      //   statusBarProps={{ barStyle: 'light-content' }}
+      //   barStyle="light-content" // or directly
+      //   centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
+      //   containerStyle={{
+      //     backgroundColor: '#3D6DCC',
+      //     justifyContent: 'space-around',
+      //   }}
+      // />,
+      // }}
          />
       <HomeStack.Screen name="Đơn thuốc" component={DauGoi}  options={{title : "Đơn thuốc"}} />
       <HomeStack.Screen name="Xin nghỉ học" component={SuaTam}  options={{title : "Xin nghỉ"}}  />

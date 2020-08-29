@@ -21,6 +21,7 @@ import IconDauGoi from '../android/app/src/asset/img/dau-goi.png';
 import IconDon from '../android/app/src/asset/img/don_icon.png';
 import Icontkb from '../android/app/src/asset/img/icon_tkb.png';
 import IconThuoc from '../android/app/src/asset/img/thuoc-icon.jpg';
+import Header from '../screen/Header';
 import IconSucKhoe from '../android/app/src/asset/img/suc-khoe.jpg';
 
 const ListCategory = ({ navigation }) => 
@@ -33,6 +34,18 @@ const ListCategory = ({ navigation }) =>
       {id: 5, name : 'Sức khỏe',image :IconSucKhoe },
     ])
 
+    navigationOptions = ({ navigation }) => {
+      return {
+        headerTitle: <Header />,
+        headerRight: (
+          <Button
+            onPress={navigation.getParam('increaseCount')}
+            title="+1"
+            color="#fff"
+          />
+        ),
+      };
+    };
     // const [News,setNews] = useState([
     //   {id: 1, name : 'Mẹo giúp trẻ năng động hơn'},
     //   {id: 2, name : 'Những cuốn sách hữu ích cho bé'},

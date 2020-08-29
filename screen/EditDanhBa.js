@@ -119,6 +119,7 @@ const EditDanhBa =  ({ navigation,  route }) => {
                         <Input
                         onChangeText={text  => {setValueUser({...valueUser,ba_phone:text})}}
                             label='SDT ba bé'
+                            keyboardType='numeric'
                           value={valueUser.ba_phone}
 
                         />
@@ -127,6 +128,7 @@ const EditDanhBa =  ({ navigation,  route }) => {
                         <Input 
                         onChangeText={text  => {setValueUser({...valueUser,me_phone:text})}}
                             label='SDT mẹ bé'
+                            keyboardType='numeric'
                             value = {valueUser.me_phone}
                         />    
                 </View>
